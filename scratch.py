@@ -94,3 +94,11 @@ except Exception as e:
 #
 # assert recovered_plaintext == plaintext
 # print("PASS: Correct key successfully recovered plaintext")
+
+# -------------------------------------------------------------------
+# 6. Write out encrypted file
+# -------------------------------------------------------------------
+# Q1: Can I use my custom extension after the file name?
+
+with open("cipher.txt", "wb") as f:
+    f.write(nonce+ciphertext)
