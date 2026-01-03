@@ -102,3 +102,16 @@ except Exception as e:
 
 with open("cipher.txt", "wb") as f:
     f.write(nonce+ciphertext)
+
+with open("cipher.txt", "rb") as f:
+    nonce_plus_cipher = f.read()
+
+
+sliced_nonce = nonce_plus_cipher[:12]
+sliced_ciphertext = nonce_plus_cipher[12:]
+print("Nonce length:", len(sliced_nonce))
+print("Ciphertext length:", len(sliced_ciphertext))
+
+recovered_text = AESGCM(key).decrypt(sliced_nonce, sliced_ciphertext, None)
+print("recovered text:", recovered_text)
+assert recovered_text == plaintext
