@@ -115,3 +115,16 @@ print("Ciphertext length:", len(sliced_ciphertext))
 recovered_text = AESGCM(key).decrypt(sliced_nonce, sliced_ciphertext, None)
 print("recovered text:", recovered_text)
 assert recovered_text == plaintext
+
+
+# -----------------------------------------------------------
+#   Destroy Key
+# -----------------------------------------------------------
+key = bytearray(os.urandom(32))
+
+# overwrite in place
+for i in range(len(key)):
+    key[i] = 0
+
+del key
+
