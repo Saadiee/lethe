@@ -17,8 +17,8 @@ def shred_file(path: Path) -> Path:
         raise IsADirectoryError(f"path is not a regular file: {path}")
 
     encrypted_path = path.with_name(path.name + ".lethe")
-    if encrypted_path.exists():
-        raise FileExistsError(f"encrypted file already exists: {encrypted_path}")
+    if path.suffix.lower() == ".lethe":
+        raise FileExistsError(f"refusing to shred an already encrypted Lethe artifact")
 
     with path.open("rb") as f:
         plaintext = f.read()
