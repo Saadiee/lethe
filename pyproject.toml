@@ -14,9 +14,11 @@ dependencies = [
 
 [tool.poetry]
 packages = [
-    { include = "keys" }
+    { include = "cryptoshred" }
 ]
 
+[project.scripts]
+lethe = "cryptoshred.cli:main"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
