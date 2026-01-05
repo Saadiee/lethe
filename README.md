@@ -179,6 +179,7 @@ Lethe follows standard UNIX conventions:
 - Shredding is **irreversible**
 - Lethe does **not** attempt secure overwrites
 - Plaintext remnants created prior to execution are out of scope
+- Since the file is loaded in memory (f.read()), using this tool on large files can result in system crashes.
 
 ## Summary
 
